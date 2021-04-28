@@ -1,0 +1,60 @@
+#include <stdio.h>
+
+struct candidato
+{
+   const char *nome;
+   int votos;
+} candidato[5] = { {"Chapa 1",    0},
+                  {"Chapa 2",       0},
+                  {"Chapa 3",     0},
+                  {"Chapa 4",     0},
+                  {"Chapa 5", 0}
+                };
+
+int main(int argc, char **argv)
+{
+	int nulo = 0 , branco = 0, voto;
+	char cont;
+	do
+	{
+		printf ("Escolha um dos numeros abaixo para realizar a sua votacao:");
+		printf ("\n\n 1 - Chapa 1");
+		printf ("\n 2 - Chapa 2");
+		printf ("\n 3 - Chapa 3");
+		printf ("\n 4 - Chapa 4");
+		printf ("\n 5 - Chapa 5");
+		printf ("\n 6 - Voto Nulo");
+		printf ("\n 0 - Branco\n\n");	
+		scanf("%d",&voto);
+		switch(voto)
+		{
+			case 0:
+			{
+				nulo++;
+				break;
+			}
+			case 1: case 2: case 3: case 4: case 5:
+			{
+				candidato[voto - 1].votos++;
+				break;
+			}
+			case 6:
+			{
+				branco++;
+				break;
+			}
+			default:
+			{
+				printf("Não existe\n");
+				break;
+			}
+		}
+		printf("Continua? s/n\n");
+       scanf("%c", &cont);
+	}
+	while(cont != 'n');
+	for (int i = 0; i < 5; i++)
+       printf("'%s' teve: %d votos\n", candidato[i].nome, candidato[i].votos);
+   printf("Nulo:%d --- Branco:%d",nulo,branco);
+
+}
